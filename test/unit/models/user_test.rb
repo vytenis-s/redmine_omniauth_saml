@@ -3,7 +3,7 @@ require File.expand_path('../../../test_helper', __FILE__)
 class UserPatchTest < ActiveSupport::TestCase
   setup do
     Setting['plugin_redmine_omniauth_saml']['enabled'] = true
-    RedmineSAML[:attribute_mapping] = {
+    Redmine::OmniAuthSAML[:attribute_mapping] = {
         'login'      => 'login',
         'firstname'  => 'first_name',
         'lastname'   => 'last_name',
@@ -61,7 +61,7 @@ class UserPatchTest < ActiveSupport::TestCase
       end
 
       should "map nested levels attributes" do
-        RedmineSAML[:attribute_mapping] = {
+        Redmine::OmniAuthSAML[:attribute_mapping] = {
             :login      => 'one.two.three.four.levels.username',
             :firstname  => 'one.two.three.four.levels.first_name',
             :lastname   => 'one.two.three.four.levels.last_name',

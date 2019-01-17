@@ -1,6 +1,6 @@
 require File.expand_path('../../test_helper', __FILE__)
 
-class AccountPatchTest < ActionController::IntegrationTest
+class AccountPatchTest < ActionDispatch::IntegrationTest
   fixtures :users, :roles
 
   context "GET /auth/:provider" do
