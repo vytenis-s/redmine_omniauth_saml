@@ -6,8 +6,10 @@ module Redmine::OmniAuthSAML
       base.send(:include, InstanceMethods)
       base.class_eval do
         unloadable
-        alias_method_chain :login, :saml
-        alias_method_chain :logout, :saml
+	alias_method :login_without_saml, :login
+	alias_method :login, :login_with_saml
+	alias_method :logout_without_saml, :logout
+	alias_method :logout, :logout_with_saml
       end
     end
 
@@ -193,5 +195,5 @@ end
 
 unless AccountController.included_modules.include? Redmine::OmniAuthSAML::AccountControllerPatch
   AccountController.send(:include, Redmine::OmniAuthSAML::AccountControllerPatch)
-  AccountController.skip_before_filter :verify_authenticity_token, :only => [:login_with_saml_callback]
+  AccountController.skip_before_action :verify_authenticity_token, :only => [:login_with_saml_callback]
 end
