@@ -7,3 +7,14 @@
 #saml-login a:hover { background-color:#628DB6; }
 #saml-login a:active { position:relative; top:1px; }
 #login-form table { margin-top:2em; }
+
+#saml-login input[type="submit"] {
+   padding: 7px; 
+   max-width: 800px;
+   text-align: center;
+   text-decoration: none !important;
+   box-sizing: border-box;
+   font-size: 16px;
+   font-weight: bold;
+   color: #555;
+}
